@@ -8,7 +8,8 @@ public class GraphicsObject {
 	private double velocY = 0;
 	
 	
-	public void GraphicsObject() {
-		
+	public void GraphicsObject(double x, double y) {
+		this.x = x;
+		this.y = y;
 	}
 }
