@@ -13,28 +13,36 @@ public class Katt extends GraphicsObject {
 	private double posY;
 	private double speedX = 4;
 	private double speedY = 4;
+	private int directionX = 1; // 1 is right, -1 is left
+	private int directionY = 1; // 1 is down, -1 is up
 	private Image sprite;
-	private boolean movingRight = true;
 	
 
 	public Katt(String spritePath) {
-		
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}	
 	
 	@Override
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
 			
-			if(movingRight)
-				g.drawImage(sprite, 0, 0, sprite.getWidth(null), sprite.getHeight(null), sprite.getWidth(null), 0, 0, sprite.getHeight(null), null);
-			else
-				g.drawImage(sprite, 0, 0, null);
+			int startX = (directionX >= 0) ? sprite.getWidth(null) : 0;
+			int endX = sprite.getWidth(null) - startX;
+			
+			System.out.println(directionX);
+			System.out.println(startX + " - " + endX);
+			System.out.println();
+		
+			g.drawImage(
+				sprite,
+				sprite.getWidth(null), 0, 0, sprite.getWidth(null),
+				0, 0, sprite.getWidth(null), sprite.getHeight(null),
+				null
+			);
 			
 		g.translate(-posX, -posY);
 	}
@@ -44,17 +52,19 @@ public class Katt extends GraphicsObject {
 		// Movement along Y-axis
 		if(controller.keys[KeyEvent.VK_UP]) {
 			posY -= speedY;
+			directionY = -1;
 		} else if(controller.keys[KeyEvent.VK_DOWN]) {
 			posY += speedY;
+			directionY = 1;
 		}
 		
-		// Movement along Y-axis
+		// Movement along X-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
 			posX -= speedX;
-			movingRight = false;
+			directionX = -1;
 		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
 			posX += speedX;
-			movingRight = true;
+			directionX = 1;
 		}
 	}
 	
