@@ -29,17 +29,10 @@ public class Katt extends GraphicsObject {
 	@Override
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
-			
-			int startX = (directionX >= 0) ? sprite.getWidth(null) : 0;
-			int endX = sprite.getWidth(null) - startX;
-			
-			System.out.println(directionX);
-			System.out.println(startX + " - " + endX);
-			System.out.println();
-		
+					
 			g.drawImage(
 				sprite,
-				sprite.getWidth(null), 0, 0, sprite.getWidth(null),
+				directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2), 0, -directionX*sprite.getWidth(null)/2, sprite.getWidth(null),
 				0, 0, sprite.getWidth(null), sprite.getHeight(null),
 				null
 			);
