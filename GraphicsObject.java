@@ -1,4 +1,4 @@
-public class GraphicsObject {
+public abstract class GraphicsObject {
 	
 	private double x = 0;
 	private double y = 0;
@@ -12,4 +12,8 @@ public class GraphicsObject {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public abstract void render();
+	
+	public abstract void update();
 }

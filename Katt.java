@@ -1,4 +1,15 @@
+public class Katt extends GraphicsObject {
 
-public class Katt {
+	@Override
+	public void render() {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
