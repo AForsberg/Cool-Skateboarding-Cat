@@ -15,21 +15,25 @@ public class Katt extends GraphicsObject {
 	private double speedY = 4;
 	private int directionX = 1; // 1 is right, -1 is left
 	private int directionY = 1; // 1 is down, -1 is up
-	private Image sprite;
+	private Image sprite; // Could be made in into a HashSet to support animation
 	
 
 	public Katt(String spritePath) {
+		
+		// Load Katt-sprite from given URL
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}	
 	
 	@Override
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
-					
+			
+			// Draw the image so that katten is looking left if directionX is -1 and looking right if directionX is 1
 			g.drawImage(
 				sprite,
 				directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2), 0, -directionX*sprite.getWidth(null)/2, sprite.getWidth(null),
@@ -42,6 +46,9 @@ public class Katt extends GraphicsObject {
 
 	@Override
 	public void update(Controller controller) {
+		
+		// TODO Make the katt accelerate smoothly instead of just adding the speed
+		
 		// Movement along Y-axis
 		if(controller.keys[KeyEvent.VK_UP]) {
 			posY -= speedY;
