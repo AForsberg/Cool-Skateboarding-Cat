@@ -1,11 +1,7 @@
+import java.awt.Graphics2D;
+
 
 public class Pool extends GraphicsObject {
-
-	@Override
-	public void render() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void update() {
@@ -13,4 +9,9 @@ public class Pool extends GraphicsObject {
 		
 	}
 
+	@Override
+	public void render(Graphics2D g) {
+		// TODO Auto-generated method stub
+		
+	}
 }

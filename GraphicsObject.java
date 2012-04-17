@@ -1,3 +1,5 @@
+import java.awt.Graphics2D;
+
 public abstract class GraphicsObject {
 	
 	private double x = 0;
@@ -13,7 +15,7 @@ public abstract class GraphicsObject {
 		this.y = y;
 	}
 	
-	public abstract void render();
-	
 	public abstract void update();
+
+	public abstract void render(Graphics2D g);
 }

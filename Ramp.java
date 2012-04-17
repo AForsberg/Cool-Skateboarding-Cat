@@ -1,14 +1,17 @@
+import java.awt.Graphics2D;
+
 
 public class Ramp extends GraphicsObject {
 
+	
 	@Override
-	public void render() {
+	public void update() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update() {
+	public void render(Graphics2D g) {
 		// TODO Auto-generated method stub
 		
 	}
