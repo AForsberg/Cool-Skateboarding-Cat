@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.geom.AffineTransform;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -10,9 +11,10 @@ public class Katt extends GraphicsObject {
 
 	private double posX;
 	private double posY;
-	private double speedX = 10;
-	private double speedY = 10;
+	private double speedX = 4;
+	private double speedY = 4;
 	private Image sprite;
+	private boolean movingRight = true;
 	
 
 	public Katt(String spritePath) {
@@ -28,7 +30,12 @@ public class Katt extends GraphicsObject {
 	@Override
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
-			g.drawImage(sprite, -sprite.getWidth(null)/2, -sprite.getHeight(null)/2, null);
+			
+			if(movingRight)
+				g.drawImage(sprite, 0, 0, sprite.getWidth(null), sprite.getHeight(null), sprite.getWidth(null), 0, 0, sprite.getHeight(null), null);
+			else
+				g.drawImage(sprite, 0, 0, null);
+			
 		g.translate(-posX, -posY);
 	}
 
@@ -44,12 +51,11 @@ public class Katt extends GraphicsObject {
 		// Movement along Y-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
 			posX -= speedX;
+			movingRight = false;
 		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
 			posX += speedX;
+			movingRight = true;
 		}
-		
-		
-		System.out.println(posX);
 	}
 	
 	public double getPosX() {
