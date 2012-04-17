@@ -9,16 +9,9 @@ import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
 
-	private double posX;
-	private double posY;
-	private double speedX = 4;
-	private double speedY = 4;
-	private int directionX = 1; // 1 is right, -1 is left
-	private int directionY = 1; // 1 is down, -1 is up
-	private Image sprite; // Could be made in into a HashSet to support animation
-	
-
 	public Katt(String spritePath) {
+		
+		velocX = velocY = 4;
 		
 		// Load Katt-sprite from given URL
 		try {
@@ -51,19 +44,19 @@ public class Katt extends GraphicsObject {
 		
 		// Movement along Y-axis
 		if(controller.keys[KeyEvent.VK_UP]) {
-			posY -= speedY;
+			posY -= velocY;
 			directionY = -1;
 		} else if(controller.keys[KeyEvent.VK_DOWN]) {
-			posY += speedY;
+			posY += velocY;
 			directionY = 1;
 		}
 		
 		// Movement along X-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
-			posX -= speedX;
+			posX -= velocX;
 			directionX = -1;
 		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
-			posX += speedX;
+			posX += velocX;
 			directionX = 1;
 		}
 	}
@@ -85,18 +78,18 @@ public class Katt extends GraphicsObject {
 	}
 
 	public double getSpeedX() {
-		return speedX;
+		return velocX;
 	}
 
 	public void setSpeedX(double speedX) {
-		this.speedX = speedX;
+		this.velocX = speedX;
 	}
 
 	public double getSpeedY() {
-		return speedY;
+		return velocY;
 	}
 
 	public void setSpeedY(double speedY) {
-		this.speedY = speedY;
+		this.velocY = speedY;
 	}
 }
