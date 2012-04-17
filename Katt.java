@@ -18,13 +18,13 @@ public class Katt extends GraphicsObject {
 		g.translate(this.posX, this.posY);
 				
 		g.setColor(Color.RED);
+		g.fillRect(0, 0, 100, 100);
 		
 		g.translate(-this.posX, -this.posY);
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		
 	}
 	

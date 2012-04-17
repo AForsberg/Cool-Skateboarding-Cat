@@ -1,5 +1,7 @@
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
@@ -13,6 +15,9 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private static Dimension d;
 	private static Controller controller = new Controller();
 	private boolean running;
+	private Katt katten;
+	private Pool poolen;
+	private Ramp rampen;
 	
 	public Skateboardspel() {
 		/*
@@ -30,6 +35,9 @@ public class Skateboardspel extends Canvas implements Runnable {
 		frame.addMouseListener(controller);
 		frame.addMouseMotionListener(controller);
 		frame.addKeyListener(controller);
+		
+		
+		katten = new Katt();
 	}
 
 
@@ -61,13 +69,17 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private void render() {
 		BufferStrategy strategy = getBufferStrategy();
 		
-			// katt.render();
+			Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, getWidth(), getHeight());
+			
+			katten.render(g);
 		
 		strategy.show();
 	}
 	
 	private void update() {
-		// katt.update(controller);
+		katten.update();
 	}
 	
 	
