@@ -15,7 +15,7 @@ public abstract class GraphicsObject {
 		this.y = y;
 	}
 	
-	public abstract void update();
+	public abstract void update(Controller controller);
 
 	public abstract void render(Graphics2D g);
 }

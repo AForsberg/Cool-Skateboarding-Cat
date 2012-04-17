@@ -5,7 +5,7 @@ public class Ramp extends GraphicsObject {
 
 	
 	@Override
-	public void update() {
+	public void update(Controller controller) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -32,12 +32,12 @@ public class Skateboardspel extends Canvas implements Runnable {
 		setMaximumSize(d);
 		
 		// Setting up listeners for mouse and keyboard
-		frame.addMouseListener(controller);
-		frame.addMouseMotionListener(controller);
-		frame.addKeyListener(controller);
+		addMouseListener(controller);
+		addMouseMotionListener(controller);
+		addKeyListener(controller);
 		
 		
-		katten = new Katt();
+		katten = new Katt("katt.png");
 	}
 
 
@@ -79,7 +79,7 @@ public class Skateboardspel extends Canvas implements Runnable {
 	}
 	
 	private void update() {
-		katten.update();
+		katten.update(controller);
 	}
 	
 	

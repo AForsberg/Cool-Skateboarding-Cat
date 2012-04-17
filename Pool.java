@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 public class Pool extends GraphicsObject {
 
 	@Override
-	public void update() {
+	public void update(Controller controller) {
 		// TODO Auto-generated method stub
 		
 	}
