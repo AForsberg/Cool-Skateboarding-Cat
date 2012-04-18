@@ -7,7 +7,6 @@ public class Background extends GraphicsObject {
 		
 		posX = posY = 0;
 		
-		// Load Bakground from given URL
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
 		} catch (IOException e) {
@@ -17,6 +16,7 @@ public class Background extends GraphicsObject {
 
 	@Override
 	public void update(Controller control) {
-		// TODO Auto-generated method stub
+		// Background is not moving relative to world,
+		// so this method will NEVER be used.
 	}
 }

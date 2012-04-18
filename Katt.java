@@ -10,7 +10,6 @@ public class Katt extends GraphicsObject {
 		
 		velocX = velocY = 10;
 		
-		// Load Katt-sprite from given URL
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
 		} catch (IOException e) {
@@ -34,7 +33,6 @@ public class Katt extends GraphicsObject {
 
 	@Override
 	public void update(Controller controller) {		
-		// Movement along X-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
 			posX -= velocX;
 			posX = (posX < minX) ? minX : posX;
@@ -47,7 +45,6 @@ public class Katt extends GraphicsObject {
 			directionX = 1;
 		}
 		
-		// Movement along Y-axis
 		if(controller.keys[KeyEvent.VK_UP]) {
 			posY -= velocY;
 			posY = (posY < minY) ? minY : posY;
@@ -61,6 +58,11 @@ public class Katt extends GraphicsObject {
 		}
 	}
 	
+	/**
+	 * Move the katt to given position
+	 * @param x
+	 * @param y
+	 */
 	public void moveTo(double x, double y) {
 		posX = x;
 		posY = y;
