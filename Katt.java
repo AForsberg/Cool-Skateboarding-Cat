@@ -8,7 +8,7 @@ public class Katt extends GraphicsObject {
 
 	public Katt(String spritePath) {
 		
-		velocX = velocY = 4;
+		velocX = velocY = 10;
 		
 		// Load Katt-sprite from given URL
 		try {
@@ -33,18 +33,17 @@ public class Katt extends GraphicsObject {
 	}
 
 	@Override
-	public void update(Controller controller) {
-		
-		// TODO Make the katt accelerate smoothly instead of just adding the speed
-		
+	public void update(Controller controller) {		
 		// Movement along X-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
 			posX -= velocX;
 			posX = (posX < minX) ? minX : posX;
+			
 			directionX = -1;
 		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
 			posX += velocX;
 			posX = (posX > maxX) ? maxX : posX;
+			
 			directionX = 1;
 		}
 		
@@ -52,10 +51,12 @@ public class Katt extends GraphicsObject {
 		if(controller.keys[KeyEvent.VK_UP]) {
 			posY -= velocY;
 			posY = (posY < minY) ? minY : posY;
+			
 			directionY = -1;
 		} else if(controller.keys[KeyEvent.VK_DOWN]) {
 			posY += velocY;
 			posY = (posY > maxY) ? maxY : posY;
+			
 			directionY = 1;
 		}
 	}

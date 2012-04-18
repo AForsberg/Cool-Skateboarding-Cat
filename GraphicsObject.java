@@ -46,7 +46,7 @@ public abstract class GraphicsObject {
 	}
 	
 	public double getSpriteWidth() {
-		return sprite.getHeight(null);
+		return sprite.getWidth(null);
 	}
 	
 	public double getSpriteHeight() {

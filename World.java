@@ -16,7 +16,7 @@ public class World {
 		
 		background = new Background(bgPath);
 		
-		camera = new Camera(new Dimension(800, 600));
+		camera = new Camera(new Dimension(1200, 600));
 		
 		worldDimension = new Dimension((int)background.getSpriteWidth(), (int)background.getSpriteHeight());
 		
@@ -43,6 +43,12 @@ public class World {
 		katten.update(controller);
 		camera.update();
 		background.update(controller);
+		
+//		System.out.println("KATTEN");
+//		System.out.println("X:"+katten.getPosX()+" Y:"+katten.getPosY());
+//		System.out.println("CAMERA");
+//		System.out.println("X:"+camera.getPosX()+" Y:"+camera.getPosY());
+//		System.out.println();
 	}
 	
 	public Dimension getCameraDimension() {

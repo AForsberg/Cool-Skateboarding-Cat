@@ -57,5 +57,7 @@ public class Camera implements WorldObject {
 		maxX = limits.getWidth() - size.getWidth()/2;
 		minY = 0 + size.getHeight()/2;
 		maxY = limits.getHeight() - size.getHeight()/2;
+		
+		System.out.println(limits.toString());
 	}
 }
