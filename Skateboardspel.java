@@ -15,7 +15,7 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private static Dimension d;
 	private static Controller controller = new Controller();
 	private boolean running;
-	private Background background;
+	private World world;
 	private Katt katten;
 	private Pool poolen;
 	private Ramp rampen;
@@ -35,10 +35,7 @@ public class Skateboardspel extends Canvas implements Runnable {
 		addKeyListener(controller);
 		
 		katten = new Katt("katt.png", d);
-		katten.setPosX(d.getWidth()/2);
-		katten.setPosY(d.getHeight()/2);
-		
-		background = new Background("background.jpg", d, katten);
+		world = new World("background.jpg", d, katten);
 	}
 
 
@@ -74,7 +71,7 @@ public class Skateboardspel extends Canvas implements Runnable {
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, getWidth(), getHeight());
 			
-			background.render(g);
+			world.render(g);
 			
 			katten.render(g);
 		
@@ -82,8 +79,8 @@ public class Skateboardspel extends Canvas implements Runnable {
 	}
 	
 	private void update() {
+		world.update(controller);
 		katten.update(controller);
-		background.update(controller);
 	}
 	
 	
