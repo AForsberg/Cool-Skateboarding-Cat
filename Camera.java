@@ -53,11 +53,11 @@ public class Camera implements WorldObject {
 
 	@Override
 	public void setLimits(Dimension limits) {
-		minX = 0 + size.getWidth()/2;
-		maxX = limits.getWidth() - size.getWidth()/2;
-		minY = 0 + size.getHeight()/2;
-		maxY = limits.getHeight() - size.getHeight()/2;
+		minX = 0;
+		maxX = limits.getWidth() - size.getWidth();
+		minY = 0;
+		maxY = limits.getHeight() - size.getHeight();
 		
-		System.out.println(limits.toString());
+		System.out.println(minX+" "+maxX+" "+minY+" "+maxY);
 	}
 }
