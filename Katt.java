@@ -49,8 +49,6 @@ public class Katt extends GraphicsObject {
 			posX += velocX;
 			directionX = 1;
 		}
-		
-		System.out.println(posX);
 	}
 	
 	public double getSpeedX() {

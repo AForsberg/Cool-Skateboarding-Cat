@@ -23,18 +23,18 @@ public class Skateboardspel extends Canvas implements Runnable {
 	public Skateboardspel() {
 		// RUN SKATEBOARDSPELET
 		
+		world = new World("background.jpg");
+		
 		// Setting up static size of window.
-		d = new Dimension(800, 600);
+		d = world.getCameraDimension();
 		setPreferredSize(d);
 		setMinimumSize(d);
 		setMaximumSize(d);
 		
 		// Setting up listeners for mouse and keyboard
-		addMouseListener(controller);
-		addMouseMotionListener(controller);
 		addKeyListener(controller);
-		
-		world = new World("background.jpg");
+		//addMouseListener(controller);
+		//addMouseMotionListener(controller);
 	}
 
 

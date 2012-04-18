@@ -39,5 +39,11 @@ public abstract class GraphicsObject {
 		this.posY = posY;
 	}
 	
+	public double getSpriteWidth() {
+		return sprite.getHeight(null);
+	}
 	
+	public double getSpriteHeight() {
+		return sprite.getHeight(null);
+	}
 }

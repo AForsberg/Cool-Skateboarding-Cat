@@ -20,17 +20,21 @@ public class Background extends GraphicsObject {
 		posX = -sprite.getWidth(null);
 		posY = -sprite.getHeight(null);
 	}
-	
-	@Override
-	public void update(Controller control) {
-		posX = -toFollow.getPosX();
-		posY = -toFollow.getPosY();
-	}
 
 	@Override
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
-			g.drawImage(sprite, 0, 0, null);
+			g.drawImage(sprite, -sprite.getWidth(null)/2, -sprite.getHeight(null), null);
 		g.translate(-posX, -posY);
+	}
+	
+	@Override
+	public void update(Controller controller) {
+		
+	}
+	
+	public void moveTo(double x, double y) {
+		posX = x;
+		posY = y;
 	}
 }
