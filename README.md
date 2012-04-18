@@ -10,3 +10,12 @@ The goal of the game is to put the cat in the pool using a spring.
 The force generated from the spring will give the cat a velocity, and make it jump.
 
 The players task is to make to spring push the cat with such force that its speed makes it land nicely in the pool.
+
+##Contributors
+* Anton Niklasson
+* Anton Forsberg
+* Ludvig Fischerström
+* Elias Kärnsund
+* Alexander Lantz
+* Ammar Alderhally
+* Joakim Eriksson
