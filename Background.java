@@ -9,7 +9,7 @@ public class Background extends GraphicsObject {
 	private Dimension containerDimension;
 	private GraphicsObject toFollow;
 	
-	public Background(String spritePath, Dimension d, GraphicsObject toFollow) {
+	public Background(String spritePath) {
 		// Load Bakground from given URL
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
@@ -17,8 +17,6 @@ public class Background extends GraphicsObject {
 			e.printStackTrace();
 		}
 		
-		containerDimension = d;
-		this.toFollow = toFollow;
 		posX = -sprite.getWidth(null);
 		posY = -sprite.getHeight(null);
 	}
@@ -32,7 +30,7 @@ public class Background extends GraphicsObject {
 	@Override
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
-			g.drawImage(sprite, 0, (int) ((int)-sprite.getHeight(null)+containerDimension.getHeight()), null);
+			g.drawImage(sprite, 0, 0, null);
 		g.translate(-posX, -posY);
 	}
 }

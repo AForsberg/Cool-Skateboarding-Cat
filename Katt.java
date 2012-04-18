@@ -10,9 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
 
-	private Dimension containerDimension;
-
-	public Katt(String spritePath, Dimension d) {
+	public Katt(String spritePath) {
 		
 		velocX = velocY = 4;
 		
@@ -22,41 +20,26 @@ public class Katt extends GraphicsObject {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		containerDimension = d;
 	}	
 	
 	@Override
 	public void render(Graphics2D g) {
-		g.translate(containerDimension.getWidth()/2, containerDimension.getHeight()/2);
-			
-			int startX = directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2);
-			int endX = -directionX*sprite.getWidth(null)/2;
-		
-			// Draw the image so that katten is looking left if directionX is -1 and looking right if directionX is 1
-			g.drawImage(
-				sprite,
-				startX, -sprite.getHeight(null)/2, endX, sprite.getHeight(null)/2,
-				0, 0, sprite.getWidth(null), sprite.getHeight(null),
-				null
-			);
-			
-		g.translate(-containerDimension.getWidth()/2, -containerDimension.getHeight()/2);
+		int startX = directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2);
+		int endX = -directionX*sprite.getWidth(null)/2;
+	
+		// Draw the image so that katten is looking left if directionX is -1 and looking right if directionX is 1
+		g.drawImage(
+			sprite,
+			startX, -sprite.getHeight(null)/2, endX, sprite.getHeight(null)/2,
+			0, 0, sprite.getWidth(null), sprite.getHeight(null),
+			null
+		);
 	}
 
 	@Override
 	public void update(Controller controller) {
 		
 		// TODO Make the katt accelerate smoothly instead of just adding the speed
-		
-		// Movement along Y-axis
-		if(controller.keys[KeyEvent.VK_UP]) {
-			posY -= velocY;
-			directionY = -1;
-		} else if(controller.keys[KeyEvent.VK_DOWN]) {
-			posY += velocY;
-			directionY = 1;
-		}
 		
 		// Movement along X-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
@@ -66,6 +49,8 @@ public class Katt extends GraphicsObject {
 			posX += velocX;
 			directionX = 1;
 		}
+		
+		System.out.println(posX);
 	}
 	
 	public double getSpeedX() {

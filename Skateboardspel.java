@@ -34,8 +34,7 @@ public class Skateboardspel extends Canvas implements Runnable {
 		addMouseMotionListener(controller);
 		addKeyListener(controller);
 		
-		katten = new Katt("katt.png", d);
-		world = new World("background.jpg", d, katten);
+		world = new World("background.jpg");
 	}
 
 
@@ -72,15 +71,12 @@ public class Skateboardspel extends Canvas implements Runnable {
 			g.fillRect(0, 0, getWidth(), getHeight());
 			
 			world.render(g);
-			
-			katten.render(g);
 		
 		strategy.show();
 	}
 	
 	private void update() {
 		world.update(controller);
-		katten.update(controller);
 	}
 	
 	
