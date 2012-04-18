@@ -1,9 +1,10 @@
+import java.awt.Dimension;
+
 public interface WorldObject {
-	
-	// Return an array with coordinates
-	public double[] getScreenCoords();
 	
 	public double getPosX();
 	public double getPosY();
+	
+	public void setLimits(Dimension limits);
 	
 }

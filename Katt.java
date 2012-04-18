@@ -1,9 +1,5 @@
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.awt.geom.AffineTransform;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -20,7 +16,7 @@ public class Katt extends GraphicsObject {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
 	
 	@Override
 	public void render(Graphics2D g) {
@@ -44,26 +40,28 @@ public class Katt extends GraphicsObject {
 		// Movement along X-axis
 		if(controller.keys[KeyEvent.VK_LEFT]) {
 			posX -= velocX;
+			posX = (posX < minX) ? minX : posX;
 			directionX = -1;
 		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
 			posX += velocX;
+			posX = (posX > maxX) ? maxX : posX;
 			directionX = 1;
+		}
+		
+		// Movement along Y-axis
+		if(controller.keys[KeyEvent.VK_UP]) {
+			posY -= velocY;
+			posY = (posY < minY) ? minY : posY;
+			directionY = -1;
+		} else if(controller.keys[KeyEvent.VK_DOWN]) {
+			posY += velocY;
+			posY = (posY > maxY) ? maxY : posY;
+			directionY = 1;
 		}
 	}
 	
-	public double getSpeedX() {
-		return velocX;
-	}
-
-	public void setSpeedX(double speedX) {
-		this.velocX = speedX;
-	}
-
-	public double getSpeedY() {
-		return velocY;
-	}
-
-	public void setSpeedY(double speedY) {
-		this.velocY = speedY;
+	public void moveTo(double x, double y) {
+		posX = x;
+		posY = y;
 	}
 }
