@@ -55,6 +55,12 @@ public class World {
 		return camera.getDimension();
 	}
 	
+	/**
+	 * Returns the actual coordinates on screen.
+	 * By subtracting the camera position from given GOs position
+	 * @param go
+	 * @return
+	 */
 	public double[] getScreenCoords(GraphicsObject go) {
 		double[] screenCoords = new double[2];
 		screenCoords[0]	= go.getPosX() - camera.getPosX();

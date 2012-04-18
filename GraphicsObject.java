@@ -53,6 +53,10 @@ public abstract class GraphicsObject {
 		return sprite.getHeight(null);
 	}
 	
+	/**
+	 * GraphicsObject will not be able to move outside these limits
+	 * @param limits
+	 */
 	public void setLimits(Dimension limits) {
 		minX = 0 + sprite.getWidth(null)/2;
 		maxX = limits.getWidth() - sprite.getWidth(null)/2;

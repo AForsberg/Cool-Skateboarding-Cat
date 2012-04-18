@@ -15,10 +15,19 @@ public class Camera implements WorldObject {
 		size = d;
 	}
 
+	/**
+	 * Make the camera follow this GraphicsObject
+	 * @param target
+	 */
 	public void setTarget(GraphicsObject target) {
 		this.target = target;
 	}
 	
+	/**
+	 * Move to given position, but stay inside limitations set with setLimits
+	 * @param x
+	 * @param y
+	 */
 	public void moveTo(double x, double y) {
 		posX = x - size.getWidth()/2;
 		if(posX < minX)
@@ -33,6 +42,9 @@ public class Camera implements WorldObject {
 			posY = maxY;
 	}
 			
+	/**
+	 * If there is a target to follow, move to its position.
+	 */
 	public void update() {
 		if(target != null) {
 			moveTo(target.getPosX(), target.getPosY());
@@ -51,13 +63,14 @@ public class Camera implements WorldObject {
 		return size;
 	}
 
+	/**
+	 * This WorldObject will not be able to move outside these limits
+	 */
 	@Override
 	public void setLimits(Dimension limits) {
 		minX = 0;
 		maxX = limits.getWidth() - size.getWidth();
 		minY = 0;
 		maxY = limits.getHeight() - size.getHeight();
-		
-		System.out.println(minX+" "+maxX+" "+minY+" "+maxY);
 	}
 }
