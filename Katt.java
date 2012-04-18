@@ -26,10 +26,13 @@ public class Katt extends GraphicsObject {
 	public void render(Graphics2D g) {
 		g.translate(posX, posY);
 			
+			int startX = directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2);
+			int endX = -directionX*sprite.getWidth(null)/2;
+		
 			// Draw the image so that katten is looking left if directionX is -1 and looking right if directionX is 1
 			g.drawImage(
 				sprite,
-				directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2), 0, -directionX*sprite.getWidth(null)/2, sprite.getWidth(null),
+				startX, 0, endX, sprite.getWidth(null),
 				0, 0, sprite.getWidth(null), sprite.getHeight(null),
 				null
 			);
