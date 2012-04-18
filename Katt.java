@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -9,7 +10,9 @@ import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
 
-	public Katt(String spritePath) {
+	private Dimension containerDimension;
+
+	public Katt(String spritePath, Dimension d) {
 		
 		velocX = velocY = 4;
 		
@@ -20,11 +23,12 @@ public class Katt extends GraphicsObject {
 			e.printStackTrace();
 		}
 		
+		containerDimension = d;
 	}	
 	
 	@Override
 	public void render(Graphics2D g) {
-		g.translate(posX, posY);
+		g.translate(containerDimension.getWidth()/2, containerDimension.getHeight()/2);
 			
 			int startX = directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2);
 			int endX = -directionX*sprite.getWidth(null)/2;
@@ -32,12 +36,12 @@ public class Katt extends GraphicsObject {
 			// Draw the image so that katten is looking left if directionX is -1 and looking right if directionX is 1
 			g.drawImage(
 				sprite,
-				startX, 0, endX, sprite.getWidth(null),
+				startX, -sprite.getHeight(null)/2, endX, sprite.getHeight(null)/2,
 				0, 0, sprite.getWidth(null), sprite.getHeight(null),
 				null
 			);
 			
-		g.translate(-posX, -posY);
+		g.translate(-containerDimension.getWidth()/2, -containerDimension.getHeight()/2);
 	}
 
 	@Override
@@ -64,22 +68,6 @@ public class Katt extends GraphicsObject {
 		}
 	}
 	
-	public double getPosX() {
-		return posX;
-	}
-
-	public void setPosX(double posX) {
-		this.posX = posX;
-	}
-
-	public double getPosY() {
-		return posY;
-	}
-
-	public void setPosY(double posY) {
-		this.posY = posY;
-	}
-
 	public double getSpeedX() {
 		return velocX;
 	}

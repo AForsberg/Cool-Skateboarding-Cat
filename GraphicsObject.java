@@ -22,4 +22,22 @@ public abstract class GraphicsObject {
 	public abstract void update(Controller control);
 
 	public abstract void render(Graphics2D g);
+
+	public double getPosX() {
+		return posX;
+	}
+
+	public void setPosX(double posX) {
+		this.posX = posX;
+	}
+
+	public double getPosY() {
+		return posY;
+	}
+
+	public void setPosY(double posY) {
+		this.posY = posY;
+	}
+	
+	
 }
