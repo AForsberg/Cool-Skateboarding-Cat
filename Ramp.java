@@ -1,19 +1,22 @@
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 
 public class Ramp extends GraphicsObject {
 
+	public Ramp() {
+		
+	}
 	
 	@Override
 	public void update(Controller controller) {
-		// TODO Auto-generated method stub
-		
+		// Ramp can't move.
 	}
 
 	@Override
 	public void render(Graphics2D g) {
-		// TODO Auto-generated method stub
-		
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, 100, 100);
 	}
 
 }

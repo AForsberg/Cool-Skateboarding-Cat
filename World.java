@@ -10,6 +10,7 @@ public class World {
 	private Dimension worldDimension;
 	private Katt katten;
 	private Camera camera;
+	private Ramp rampen;
 
 	
 	public World(String bgPath) {
@@ -27,6 +28,10 @@ public class World {
 		
 		camera.setTarget(katten);
 		camera.setLimits(worldDimension);
+		
+		rampen = new Ramp();
+		rampen.setPosX(800);
+		rampen.setPosY(worldDimension.getHeight()-100);
 	}
 	
 	public void render(Graphics2D g) {
@@ -37,6 +42,10 @@ public class World {
 		g.translate(getScreenCoords(katten)[0], getScreenCoords(katten)[1]);
 			katten.render(g);
 		g.translate(-getScreenCoords(katten)[0], -getScreenCoords(katten)[1]);
+		
+		g.translate(getScreenCoords(rampen)[0], getScreenCoords(rampen)[1]);
+			rampen.render(g);
+		g.translate(-getScreenCoords(rampen)[0], -getScreenCoords(rampen)[1]);	
 	}
 	
 	public void update(Controller controller) {
