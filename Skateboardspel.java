@@ -1,5 +1,7 @@
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
@@ -13,23 +15,26 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private static Dimension d;
 	private static Controller controller = new Controller();
 	private boolean running;
+	private World world;
+	private Katt katten;
+	private Pool poolen;
+	private Ramp rampen;
 	
 	public Skateboardspel() {
-		/*
-		 * RUN SKATEBOARDSPELET
-		 */
+		// RUN SKATEBOARDSPELET
 		
+		world = new World("background.jpg");
 		
 		// Setting up static size of window.
-		d = new Dimension(800, 600);
+		d = world.getCameraDimension();
 		setPreferredSize(d);
 		setMinimumSize(d);
 		setMaximumSize(d);
 		
 		// Setting up listeners for mouse and keyboard
-		frame.addMouseListener(controller);
-		frame.addMouseMotionListener(controller);
-		frame.addKeyListener(controller);
+		addKeyListener(controller);
+		//addMouseListener(controller);
+		//addMouseMotionListener(controller);
 	}
 
 
@@ -61,13 +66,17 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private void render() {
 		BufferStrategy strategy = getBufferStrategy();
 		
-			// katt.render();
+			Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, getWidth(), getHeight());
+			
+			world.render(g);
 		
 		strategy.show();
 	}
 	
 	private void update() {
-		// katt.update(controller);
+		world.update(controller);
 	}
 	
 	
