@@ -24,7 +24,7 @@ public class World {
 		katten = new Katt("katt.png");
 		katten.setLimits(worldDimension);
 		
-		katten.moveTo(worldDimension.getWidth()/2, worldDimension.getHeight()/2);
+		katten.moveTo(0, worldDimension.getHeight());
 		
 		camera.setLimits(worldDimension);
 		
