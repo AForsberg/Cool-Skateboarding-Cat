@@ -1,11 +1,13 @@
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.io.IOException;
+import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 
 public class World {
 	
+	private HashSet<GraphicsObject> graphicsobjects = new HashSet<GraphicsObject>();
 	private Background background;
 	private Dimension worldDimension;
 	private Katt katten;
@@ -16,7 +18,7 @@ public class World {
 	public World(String bgPath) {
 		
 		background = new Background(bgPath);
-		
+	
 		camera = new Camera(new Dimension(1200, 600));
 		
 		worldDimension = new Dimension((int)background.getSpriteWidth(), (int)background.getSpriteHeight());
@@ -33,6 +35,10 @@ public class World {
 		rampen.setPosY(worldDimension.getHeight());
 		
 		camera.setTarget(katten);
+		
+		graphicsobjects.add(background);
+		graphicsobjects.add(katten);
+		graphicsobjects.add(rampen);
 	}
 	
 	public void render(Graphics2D g) {
