@@ -2,7 +2,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-public abstract class GraphicsObject {
+public class GraphicsObject {
 	
 	protected double posX = 0;
 	protected double posY = 0;
@@ -23,7 +23,9 @@ public abstract class GraphicsObject {
 		
 	}
 	
-	public abstract void update(Controller control);
+	public void update(Controller control) {
+		// Function body found in sub-classes extending GraphicsObject
+	}
 
 	public void render(Graphics2D g) {
 		g.drawImage(sprite, 0, 0, null);
