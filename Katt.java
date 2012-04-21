@@ -59,14 +59,4 @@ public class Katt extends GraphicsObject {
 		if(posY < minY) posY = minY;
 		else if(posY > maxY) posY = maxY;
 	}
-	
-	/**
-	 * Move the katt to given position
-	 * @param x
-	 * @param y
-	 */
-	public void moveTo(double x, double y) {
-		posX = x;
-		posY = y;
-	}
 }

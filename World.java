@@ -11,6 +11,7 @@ public class World {
 	private Katt katten;
 	private Camera camera;
 	private Ramp rampen;
+	private Pool poolen;
 
 	
 	public World(String bgPath) {
@@ -32,6 +33,9 @@ public class World {
 		rampen.setPosX(800);
 		rampen.setPosY(worldDimension.getHeight());
 		
+		poolen = new Pool("pool.png");
+		poolen.moveTo(worldDimension.getWidth()-poolen.getSpriteWidth(), worldDimension.getHeight());
+		
 		camera.setTarget(katten);
 	}
 	
@@ -46,7 +50,11 @@ public class World {
 		
 		g.translate(getScreenCoords(rampen)[0], getScreenCoords(rampen)[1]);
 			rampen.render(g);
-		g.translate(-getScreenCoords(rampen)[0], -getScreenCoords(rampen)[1]);	
+		g.translate(-getScreenCoords(rampen)[0], -getScreenCoords(rampen)[1]);
+		
+		g.translate(getScreenCoords(poolen)[0], getScreenCoords(poolen)[1]);
+			poolen.render(g);
+		g.translate(-getScreenCoords(poolen)[0], -getScreenCoords(poolen)[1]);
 	}
 	
 	public void update(Controller controller) {

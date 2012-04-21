@@ -2,7 +2,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-public abstract class GraphicsObject {
+public class GraphicsObject {
 	
 	protected double posX = 0;
 	protected double posY = 0;
@@ -23,7 +23,9 @@ public abstract class GraphicsObject {
 		
 	}
 	
-	public abstract void update(Controller control);
+	public void update(Controller control) {
+		
+	}
 
 	public void render(Graphics2D g) {
 		g.drawImage(sprite, 0, 0, null);
@@ -62,5 +64,10 @@ public abstract class GraphicsObject {
 		maxX = limits.getWidth() - sprite.getWidth(null)/2;
 		minY = 0 + sprite.getHeight(null)/2;
 		maxY = limits.getHeight() - sprite.getHeight(null)/2;
+	}
+	
+	public void moveTo(double x, double y) {
+		this.posX = x;
+		this.posY = y;
 	}
 }
