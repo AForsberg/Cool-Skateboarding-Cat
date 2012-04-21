@@ -42,17 +42,12 @@ public class World {
 	}
 	
 	public void render(Graphics2D g) {
-		g.translate(getScreenCoords(background)[0], getScreenCoords(background)[1]);
-			background.render(g);
-		g.translate(-getScreenCoords(background)[0], -getScreenCoords(background)[1]);
-		
-		g.translate(getScreenCoords(katten)[0], getScreenCoords(katten)[1]);
-			katten.render(g);
-		g.translate(-getScreenCoords(katten)[0], -getScreenCoords(katten)[1]);
-		
-		g.translate(getScreenCoords(rampen)[0], getScreenCoords(rampen)[1]);
-			rampen.render(g);
-		g.translate(-getScreenCoords(rampen)[0], -getScreenCoords(rampen)[1]);	
+		// Looping thru all GOs
+		for(GraphicsObject go : graphicsobjects) {
+			g.translate(getScreenCoords(go)[0], getScreenCoords(go)[1]);
+				go.render(g);
+			g.translate(-getScreenCoords(go)[0], -getScreenCoords(go)[1]);
+		}
 	}
 	
 	public void update(Controller controller) {
