@@ -6,11 +6,10 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
-
-@SuppressWarnings("serial") // Varfšr varnar Eclipse fšr det hŠr?
-
+@SuppressWarnings("serial")
+// Varfï¿½r varnar Eclipse fï¿½r det hï¿½r?
 public class Skateboardspel extends Canvas implements Runnable {
-	
+
 	private static JFrame frame = new JFrame();
 	private static Dimension d;
 	private static Controller controller = new Controller();
@@ -19,31 +18,30 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private Katt katten;
 	private Pool poolen;
 	private Ramp rampen;
-	
+
 	public Skateboardspel() {
 		// RUN SKATEBOARDSPELET
-		
-		world = new World("background.jpg");
-		
+
+		world = new World("background.JPG");
+
 		// Setting up static size of window.
 		d = world.getCameraDimension();
 		setPreferredSize(d);
 		setMinimumSize(d);
 		setMaximumSize(d);
-		
+
 		// Setting up listeners for mouse and keyboard
 		addKeyListener(controller);
-		//addMouseListener(controller);
-		//addMouseMotionListener(controller);
+		// addMouseListener(controller);
+		// addMouseMotionListener(controller);
 	}
-
 
 	@Override
 	public void run() {
-		while(running) {
+		while (running) {
 			update();
 			render();
-			
+
 			// Make this method not running to often
 			try {
 				Thread.sleep(10);
@@ -53,33 +51,32 @@ public class Skateboardspel extends Canvas implements Runnable {
 			}
 		}
 	}
-	
+
 	public void start() {
-		if(!running) {
+		if (!running) {
 			Thread t = new Thread(this);
 			createBufferStrategy(3);
 			running = true;
 			t.start();
 		}
 	}
-	
+
 	private void render() {
 		BufferStrategy strategy = getBufferStrategy();
-		
-			Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
-			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, getWidth(), getHeight());
-			
-			world.render(g);
-		
+
+		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, getWidth(), getHeight());
+
+		world.render(g);
+
 		strategy.show();
 	}
-	
+
 	private void update() {
 		world.update(controller);
 	}
-	
-	
+
 	public static void main(String[] args) {
 		Skateboardspel game = new Skateboardspel();
 		frame = new JFrame("SKATEBOARDSPELET");
@@ -90,5 +87,6 @@ public class Skateboardspel extends Canvas implements Runnable {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		game.start();
+
 	}
 }

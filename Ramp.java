@@ -4,8 +4,19 @@ import java.awt.Graphics2D;
 
 public class Ramp extends GraphicsObject {
 
-	public Ramp() {
+	private int[] xpoints = new int[4];
+	private int[] ypoints = new int[4];
+	
+	public Ramp(int width, int height) {
+		xpoints[0] = 0;
+		xpoints[1] = width;
+		xpoints[2] = width;
+		xpoints[3] = 0;
 		
+		ypoints[0] = 0;
+		ypoints[1] = -height;
+		ypoints[2] = 0;
+		ypoints[3] = 0;
 	}
 	
 	@Override
@@ -15,8 +26,9 @@ public class Ramp extends GraphicsObject {
 
 	@Override
 	public void render(Graphics2D g) {
-		g.setColor(Color.RED);
-		g.fillRect(0, 0, 100, 100);
+		// Setting a brownish color to fill
+		g.setColor(new Color(83, 56, 00));
+		g.fillPolygon(xpoints, ypoints, 4);
 	}
 
 }

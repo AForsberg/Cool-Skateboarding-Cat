@@ -24,14 +24,15 @@ public class World {
 		katten = new Katt("katt.png");
 		katten.setLimits(worldDimension);
 		
-		katten.moveTo(worldDimension.getWidth()/2, worldDimension.getHeight()/2);
+		katten.moveTo(0, worldDimension.getHeight());
 		
-		camera.setTarget(katten);
 		camera.setLimits(worldDimension);
 		
-		rampen = new Ramp();
+		rampen = new Ramp(200, 100);
 		rampen.setPosX(800);
-		rampen.setPosY(worldDimension.getHeight()-100);
+		rampen.setPosY(worldDimension.getHeight());
+		
+		camera.setTarget(katten);
 	}
 	
 	public void render(Graphics2D g) {

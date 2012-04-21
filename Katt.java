@@ -35,15 +35,14 @@ public class Katt extends GraphicsObject {
 	public void update(Controller controller) {		
 		if(controller.keys[KeyEvent.VK_LEFT]) {
 			posX -= velocX;
-			posX = (posX < minX) ? minX : posX;
-			
 			directionX = -1;
 		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
-			posX += velocX;
-			posX = (posX > maxX) ? maxX : posX;
-			
+			posX += velocX;			
 			directionX = 1;
 		}
+		
+		if(posX < minX) posX = minX;
+		else if(posX > maxX) posX = maxX;
 		
 		if(controller.keys[KeyEvent.VK_UP]) {
 			posY -= velocY;
@@ -56,6 +55,9 @@ public class Katt extends GraphicsObject {
 			
 			directionY = 1;
 		}
+		
+		if(posY < minY) posY = minY;
+		else if(posY > maxY) posY = maxY;
 	}
 	
 	/**
