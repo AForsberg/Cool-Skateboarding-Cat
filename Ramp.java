@@ -26,7 +26,8 @@ public class Ramp extends GraphicsObject {
 
 	@Override
 	public void render(Graphics2D g) {
-		g.setColor(Color.BLACK);
+		// Setting a brownish color to fill
+		g.setColor(new Color(83, 56, 00));
 		g.fillPolygon(xpoints, ypoints, 4);
 	}
 
