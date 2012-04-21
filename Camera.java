@@ -11,6 +11,7 @@ public class Camera implements WorldObject {
 	private Dimension size;
 	private GraphicsObject target = null;
 	
+	
 	public Camera(Dimension d) {
 		size = d;
 	}
@@ -40,6 +41,14 @@ public class Camera implements WorldObject {
 			posY = minY;
 		else if(posY > maxY)
 			posY = maxY;
+	}
+	
+	public void animateTo(double x, double y, int duration) {
+		if(duration == 0) {
+			moveTo(x, y);
+		} else {
+			
+		}
 	}
 			
 	/**
