@@ -5,7 +5,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
-
+	
+	private double angle;
+	
 	public Katt(String spritePath) {
 		
 		velocX = velocY = 10;
@@ -22,6 +24,8 @@ public class Katt extends GraphicsObject {
 		int startX = directionX*(sprite.getWidth(null)-sprite.getWidth(null)/2);
 		int endX = -directionX*sprite.getWidth(null)/2;
 	
+		g.rotate(angle);
+		
 		// Draw the image so that katten is looking left if directionX is -1 and looking right if directionX is 1
 		g.drawImage(
 			sprite,
@@ -29,6 +33,8 @@ public class Katt extends GraphicsObject {
 			0, 0, sprite.getWidth(null), sprite.getHeight(null),
 			null
 		);
+		
+		g.rotate(-angle);
 	}
 
 	@Override
@@ -68,5 +74,9 @@ public class Katt extends GraphicsObject {
 	public void moveTo(double x, double y) {
 		posX = x;
 		posY = y;
+	}
+	
+	public void setAngle(double angle) {
+		this.angle = angle;
 	}
 }

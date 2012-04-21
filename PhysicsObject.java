@@ -1,10 +1,8 @@
 
-public class PhysicsObject extends GraphicsObject {
+public abstract class PhysicsObject extends GraphicsObject {
 
-	@Override
-	public void update(Controller control) {
-		// TODO Auto-generated method stub
-		
-	}
+	private double mass, posX, posY, speedX, speedY;
+	
+	
 
 }
