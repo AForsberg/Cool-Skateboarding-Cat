@@ -36,7 +36,8 @@ public class World {
 		poolen = new Pool("pool.png");
 		poolen.moveTo(worldDimension.getWidth()-poolen.getSpriteWidth(), worldDimension.getHeight());
 		
-		camera.setTarget(katten);
+		camera.setTarget(poolen);
+		camera.animateTo(katten, 500);
 	}
 	
 	public void render(Graphics2D g) {
