@@ -57,7 +57,7 @@ public class Camera implements WorldObject {
 			moveTo(x, y);
 		} else {
 			animationTargetX = x;
-			animationTargetY = y;
+			animationTargetY = y - size.getHeight();
 			animationStepX = (x - this.posX) / duration;
 			animationStepY = (y - this.posY) / duration;
 			animationDuration = duration;
@@ -68,12 +68,16 @@ public class Camera implements WorldObject {
 	// Helper method
 	public void animateTo(GraphicsObject go, int duration) {
 		this.animateTo(go.getPosX(), go.getPosY(), duration);
+		target = go;
 	}
 	
 	public boolean isAnimationDone() {
-		boolean isDone = posX == animationTargetX && posY == animationTargetY;
-		if(isDone) isAnimating = false;
-		return isDone;
+		if(isAnimating) {
+			boolean isDone = (posX == animationTargetX && posY == animationTargetY);
+			return isDone;
+		} else {
+			return true;
+		}
 	}
 			
 	/**
@@ -81,14 +85,12 @@ public class Camera implements WorldObject {
 	 */
 	public void update() {
 		if(isAnimating) {
+			moveTo(posX+animationStepX+size.getWidth()/2, posY+animationStepY+size.getHeight()/2);
 			isAnimating = !isAnimationDone();
+			System.out.println(isAnimating);
 		} else if(target != null) {
 			moveTo(target.getPosX(), target.getPosY());
 		}
-		
-		System.out.println(posX);
-		System.out.println(posY);
-		System.out.println();
 	}
 
 	public double getPosX() {

@@ -59,6 +59,8 @@ public class World {
 	}
 	
 	public void update(Controller controller) {
+		katten.setControllable(camera.isAnimationDone());
+		
 		katten.update(controller);
 		camera.update();
 		background.update(controller);
