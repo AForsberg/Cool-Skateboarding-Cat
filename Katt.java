@@ -48,9 +48,6 @@ public class Katt extends GraphicsObject {
 				directionX = 1;
 			}
 			
-			if(posX < minX) posX = minX;
-			else if(posX > maxX) posX = maxX;
-			
 			if(controller.keys[KeyEvent.VK_UP]) {
 				posY -= velocY;
 				posY = (posY < minY) ? minY : posY;
@@ -62,10 +59,13 @@ public class Katt extends GraphicsObject {
 				
 				directionY = 1;
 			}
-			
-			if(posY < minY) posY = minY;
-			else if(posY > maxY) posY = maxY;
 		}
+		
+		// Keep this in world if it isn't controllable
+		if(posX < minX) posX = minX;
+		else if(posX > maxX) posX = maxX;
+		if(posY < minY) posY = minY;
+		else if(posY > maxY) posY = maxY;
 	}
 	
 	public void setAngle(double angle) {
