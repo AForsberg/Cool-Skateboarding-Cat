@@ -14,35 +14,33 @@ public class World {
 
 	
 	public World(String bgPath) {
-		
 		background = new Background(bgPath);
-	
-		camera = new Camera(new Dimension(1200, 600));
-		
 		worldDimension = new Dimension((int)background.getSpriteWidth(), (int)background.getSpriteHeight());
+		camera = new Camera(new Dimension(1200, 600));
+		camera.setLimits(worldDimension);
 		
 		katten = new Katt("katt.png");
 		katten.setLimits(worldDimension);
-		
 		katten.moveTo(0, worldDimension.getHeight());
-		
-		camera.setLimits(worldDimension);
 		
 		rampen = new Ramp(200, 100);
 		rampen.setPosX(800);
 		rampen.setPosY(worldDimension.getHeight());
 		
-		camera.setTarget(katten);
+		camera.setTarget(rampen);
+		camera.animateTo(katten, 300);
 		
 		graphicsobjects.add(background);
 		graphicsobjects.add(katten);
 		graphicsobjects.add(rampen);
+		graphicsobjects.add(poolen);
 	}
 	
 	public void render(Graphics2D g) {
 		// Looping thru all GOs
 		for(GraphicsObject go : graphicsobjects) {
 			g.translate(getScreenCoords(go)[0], getScreenCoords(go)[1]);
+				System.out.println(go);
 				go.render(g);
 			g.translate(-getScreenCoords(go)[0], -getScreenCoords(go)[1]);
 		}

@@ -87,7 +87,6 @@ public class Camera implements WorldObject {
 		if(isAnimating) {
 			moveTo(posX+animationStepX+size.getWidth()/2, posY+animationStepY+size.getHeight()/2);
 			isAnimating = !isAnimationDone();
-			System.out.println(isAnimating);
 		} else if(target != null) {
 			moveTo(target.getPosX(), target.getPosY());
 		}
