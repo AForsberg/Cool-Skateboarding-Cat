@@ -1,10 +1,11 @@
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.HashSet;
+import java.util.Set;
 
 public class World {
 	
-	private HashSet<GraphicsObject> graphicsobjects = new HashSet<GraphicsObject>();
+	private Set<GraphicsObject> graphicsobjects = new HashSet<GraphicsObject>(0); // Setting initial capacity to 0 to prevent NULL's
 	private Background background;
 	private Dimension worldDimension;
 	private Katt katten;
@@ -27,6 +28,9 @@ public class World {
 		rampen.setPosX(800);
 		rampen.setPosY(worldDimension.getHeight());
 		
+		poolen = new Pool("pool.png");
+		poolen.moveTo(worldDimension.getWidth(), worldDimension.getHeight());
+		
 		camera.setTarget(rampen);
 		camera.animateTo(katten, 300);
 		
@@ -40,7 +44,6 @@ public class World {
 		// Looping thru all GOs
 		for(GraphicsObject go : graphicsobjects) {
 			g.translate(getScreenCoords(go)[0], getScreenCoords(go)[1]);
-				System.out.println(go);
 				go.render(g);
 			g.translate(-getScreenCoords(go)[0], -getScreenCoords(go)[1]);
 		}
@@ -48,7 +51,6 @@ public class World {
 	
 	public void update(Controller controller) {
 		katten.setControllable(camera.isAnimationDone());
-		
 		katten.update(controller);
 		camera.update();
 		background.update(controller);
