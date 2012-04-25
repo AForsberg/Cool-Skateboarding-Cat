@@ -6,8 +6,13 @@ public class Ramp extends GraphicsObject {
 
 	private int[] xpoints = new int[4];
 	private int[] ypoints = new int[4];
+	private int width;
+	private int height;
 	
 	public Ramp(int width, int height) {
+		this.width = width;
+		this.height = height;
+		
 		xpoints[0] = 0;
 		xpoints[1] = width;
 		xpoints[2] = width;
@@ -31,4 +36,11 @@ public class Ramp extends GraphicsObject {
 		g.fillPolygon(xpoints, ypoints, 4);
 	}
 
+	public void setAngle(double angle) {
+		
+	}
+	
+	public double getAngle() {
+		return Math.atan2(height, width);
+	}
 }

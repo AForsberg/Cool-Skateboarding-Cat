@@ -1,11 +1,10 @@
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.util.HashSet;
 
 public class World {
 	
+	private HashSet<GraphicsObject> graphicsobjects = new HashSet<GraphicsObject>();
 	private Background background;
 	private Dimension worldDimension;
 	private Katt katten;
@@ -17,7 +16,7 @@ public class World {
 	public World(String bgPath) {
 		
 		background = new Background(bgPath);
-		
+	
 		camera = new Camera(new Dimension(1200, 600));
 		
 		worldDimension = new Dimension((int)background.getSpriteWidth(), (int)background.getSpriteHeight());
@@ -33,29 +32,20 @@ public class World {
 		rampen.setPosX(800);
 		rampen.setPosY(worldDimension.getHeight());
 		
-		poolen = new Pool("pool.png");
-		poolen.moveTo(worldDimension.getWidth()-poolen.getSpriteWidth(), worldDimension.getHeight());
+		camera.setTarget(katten);
 		
-		camera.setTarget(poolen);
-		camera.animateTo(katten, 500);
+		graphicsobjects.add(background);
+		graphicsobjects.add(katten);
+		graphicsobjects.add(rampen);
 	}
 	
 	public void render(Graphics2D g) {
-		g.translate(getScreenCoords(background)[0], getScreenCoords(background)[1]);
-			background.render(g);
-		g.translate(-getScreenCoords(background)[0], -getScreenCoords(background)[1]);
-		
-		g.translate(getScreenCoords(katten)[0], getScreenCoords(katten)[1]);
-			katten.render(g);
-		g.translate(-getScreenCoords(katten)[0], -getScreenCoords(katten)[1]);
-		
-		g.translate(getScreenCoords(rampen)[0], getScreenCoords(rampen)[1]);
-			rampen.render(g);
-		g.translate(-getScreenCoords(rampen)[0], -getScreenCoords(rampen)[1]);
-		
-		g.translate(getScreenCoords(poolen)[0], getScreenCoords(poolen)[1]);
-			poolen.render(g);
-		g.translate(-getScreenCoords(poolen)[0], -getScreenCoords(poolen)[1]);
+		// Looping thru all GOs
+		for(GraphicsObject go : graphicsobjects) {
+			g.translate(getScreenCoords(go)[0], getScreenCoords(go)[1]);
+				go.render(g);
+			g.translate(-getScreenCoords(go)[0], -getScreenCoords(go)[1]);
+		}
 	}
 	
 	public void update(Controller controller) {

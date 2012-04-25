@@ -25,7 +25,7 @@ public class GraphicsObject {
 	}
 	
 	public void update(Controller control) {
-		
+		// Function body found in sub-classes extending GraphicsObject
 	}
 
 	public void render(Graphics2D g) {
