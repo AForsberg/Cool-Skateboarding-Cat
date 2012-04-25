@@ -41,7 +41,6 @@ public class World {
 	}
 	
 	public void render(Graphics2D g) {
-		// Looping thru all GOs
 		for(GraphicsObject go : graphicsobjects) {
 			g.translate(getScreenCoords(go)[0], getScreenCoords(go)[1]);
 				go.render(g);
@@ -51,9 +50,11 @@ public class World {
 	
 	public void update(Controller controller) {
 		katten.setControllable(camera.isAnimationDone());
-		katten.update(controller);
 		camera.update();
-		background.update(controller);
+		
+		for(GraphicsObject go : graphicsobjects) {
+			go.update(controller);
+		}
 	}
 	
 	public Dimension getCameraDimension() {
@@ -63,8 +64,6 @@ public class World {
 	/**
 	 * Returns the actual coordinates on screen.
 	 * By subtracting the camera position from given GOs position
-	 * @param go
-	 * @return
 	 */
 	public double[] getScreenCoords(GraphicsObject go) {
 		double[] screenCoords = new double[2];
