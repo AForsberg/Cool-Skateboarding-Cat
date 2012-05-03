@@ -17,6 +17,7 @@ public class GraphicsObject {
 	protected int directionX = 1; // 1 is right, -1 is left
 	protected int directionY = 1; // 1 is down, -1 is up
 	protected Image sprite; // Could be made in into a HashSet to support animation
+	protected boolean isControllable;
 	
 	
 	public GraphicsObject() {
@@ -64,5 +65,18 @@ public class GraphicsObject {
 		maxX = limits.getWidth() - sprite.getWidth(null)/2;
 		minY = 0 + sprite.getHeight(null)/2;
 		maxY = limits.getHeight() - sprite.getHeight(null)/2;
+	}
+	
+	public void moveTo(double x, double y) {
+		this.posX = x;
+		this.posY = y;
+	}
+	
+	public void setControllable(boolean willMove) {
+		isControllable = willMove;
+	}
+	
+	public boolean isControllable() {
+		return isControllable;
 	}
 }

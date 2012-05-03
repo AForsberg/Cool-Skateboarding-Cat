@@ -39,41 +39,33 @@ public class Katt extends GraphicsObject {
 
 	@Override
 	public void update(Controller controller) {		
-		if(controller.keys[KeyEvent.VK_LEFT]) {
-			posX -= velocX;
-			directionX = -1;
-		} else if(controller.keys[KeyEvent.VK_RIGHT]) {
-			posX += velocX;			
-			directionX = 1;
+		if(isControllable) {
+			if(controller.keys[KeyEvent.VK_LEFT]) {
+				posX -= velocX;
+				directionX = -1;
+			} else if(controller.keys[KeyEvent.VK_RIGHT]) {
+				posX += velocX;			
+				directionX = 1;
+			}
+			
+			if(controller.keys[KeyEvent.VK_UP]) {
+				posY -= velocY;
+				posY = (posY < minY) ? minY : posY;
+				
+				directionY = -1;
+			} else if(controller.keys[KeyEvent.VK_DOWN]) {
+				posY += velocY;
+				posY = (posY > maxY) ? maxY : posY;
+				
+				directionY = 1;
+			}
 		}
 		
+		// Keep this in world if it isn't controllable
 		if(posX < minX) posX = minX;
 		else if(posX > maxX) posX = maxX;
-		
-		if(controller.keys[KeyEvent.VK_UP]) {
-			posY -= velocY;
-			posY = (posY < minY) ? minY : posY;
-			
-			directionY = -1;
-		} else if(controller.keys[KeyEvent.VK_DOWN]) {
-			posY += velocY;
-			posY = (posY > maxY) ? maxY : posY;
-			
-			directionY = 1;
-		}
-		
 		if(posY < minY) posY = minY;
 		else if(posY > maxY) posY = maxY;
-	}
-	
-	/**
-	 * Move the katt to given position
-	 * @param x
-	 * @param y
-	 */
-	public void moveTo(double x, double y) {
-		posX = x;
-		posY = y;
 	}
 	
 	public void setAngle(double angle) {

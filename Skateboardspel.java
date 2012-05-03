@@ -15,9 +15,6 @@ public class Skateboardspel extends Canvas implements Runnable {
 	private static Controller controller = new Controller();
 	private boolean running;
 	private World world;
-	private Katt katten;
-	private Pool poolen;
-	private Ramp rampen;
 
 	public Skateboardspel() {
 		// RUN SKATEBOARDSPELET
