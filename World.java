@@ -1,11 +1,10 @@
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class World {
 	
-	private Set<GraphicsObject> graphicsobjects = new HashSet<GraphicsObject>(0); // Setting initial capacity to 0 to prevent NULL's
+	private ArrayList<GraphicsObject> graphicsobjects = new ArrayList<GraphicsObject>(0); // Initial capacity defaults to 10
 	private Background background;
 	private Dimension worldDimension;
 	private Katt katten;
@@ -29,22 +28,24 @@ public class World {
 		rampen.setPosY(worldDimension.getHeight());
 		
 		poolen = new Pool("pool.png");
-		poolen.moveTo(worldDimension.getWidth(), worldDimension.getHeight());
+		poolen.moveTo(500,500);
 		
-		camera.setTarget(rampen);
+		camera.setTarget(poolen);
 		camera.animateTo(katten, 300);
 		
 		graphicsobjects.add(background);
-		graphicsobjects.add(katten);
 		graphicsobjects.add(rampen);
+		graphicsobjects.add(katten);
 		graphicsobjects.add(poolen);
+		
+		System.out.println(graphicsobjects);
 	}
 	
 	public void render(Graphics2D g) {
-		for(GraphicsObject go : graphicsobjects) {
-			g.translate(getScreenCoords(go)[0], getScreenCoords(go)[1]);
-				go.render(g);
-			g.translate(-getScreenCoords(go)[0], -getScreenCoords(go)[1]);
+		for(int i = 0; i < graphicsobjects.size(); i++) {
+			g.translate(getScreenCoords(graphicsobjects.get(i))[0], getScreenCoords(graphicsobjects.get(i))[1]);
+				graphicsobjects.get(i).render(g);
+			g.translate(-getScreenCoords(graphicsobjects.get(i))[0], -getScreenCoords(graphicsobjects.get(i))[1]);
 		}
 	}
 	
