@@ -10,7 +10,8 @@ public class Katt extends GraphicsObject {
 	
 	public Katt(String spritePath) {
 		
-		velocX = velocY = 10;
+		velocX = 10;
+		velocY = 0;
 		
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
@@ -40,8 +41,13 @@ public class Katt extends GraphicsObject {
 	@Override
 	public void update(Controller controller) {		
 		if(isControllable) {
-			
+			setVelocX(getVelocX() + getAccelX());
+			setVelocY(getVelocY() + getAccelY());
+		} else {
+			this.setVelocX(0);
 		}
+		
+		this.posX += this.velocX;
 		
 		// Keep this in world if it isn't controllable
 		if(posX < minX) posX = minX;

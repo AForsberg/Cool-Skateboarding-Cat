@@ -56,6 +56,8 @@ public class World {
 		for(GraphicsObject go : graphicsobjects) {
 			go.update(controller);
 		}
+		
+		katten.setAccelY(katten.getAccelY()-gravity);
 	}
 	
 	public Dimension getCameraDimension() {
