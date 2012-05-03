@@ -11,6 +11,8 @@ public class World {
 	private Camera camera;
 	private Ramp rampen;
 	private Pool poolen;
+	
+	private double gravity = 9.82;
 
 	
 	public World(String bgPath) {

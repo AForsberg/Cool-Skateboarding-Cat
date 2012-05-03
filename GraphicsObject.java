@@ -79,4 +79,36 @@ public class GraphicsObject {
 	public boolean isControllable() {
 		return isControllable;
 	}
+
+	public double getAccelX() {
+		return accelX;
+	}
+
+	public void setAccelX(double accelX) {
+		this.accelX = accelX;
+	}
+
+	public double getAccelY() {
+		return accelY;
+	}
+
+	public void setAccelY(double accelY) {
+		this.accelY = accelY;
+	}
+
+	public double getVelocX() {
+		return velocX;
+	}
+
+	public void setVelocX(double velocX) {
+		this.velocX = velocX;
+	}
+
+	public double getVelocY() {
+		return velocY;
+	}
+
+	public void setVelocY(double velocY) {
+		this.velocY = velocY;
+	}
 }
