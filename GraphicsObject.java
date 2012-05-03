@@ -79,7 +79,6 @@ public class GraphicsObject {
 	public boolean isControllable() {
 		return isControllable;
 	}
-<<<<<<< HEAD
 	
 	/**
 	 * This method returns to X- and Y-position of the top left corner of the GO instance.
@@ -92,7 +91,7 @@ public class GraphicsObject {
 		points[1] = this.getPosY();
 		
 		return points;
-=======
+	}
 
 	public double getAccelX() {
 		return accelX;
@@ -124,6 +123,5 @@ public class GraphicsObject {
 
 	public void setVelocY(double velocY) {
 		this.velocY = velocY;
->>>>>>> develop
 	}
 }

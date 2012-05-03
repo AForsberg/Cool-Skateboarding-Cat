@@ -40,7 +40,7 @@ public class Katt extends GraphicsObject {
 	@Override
 	public void update(Controller controller) {		
 		if(isControllable) {
-			this.posX += 5;
+			
 		}
 		
 		// Keep this in world if it isn't controllable
