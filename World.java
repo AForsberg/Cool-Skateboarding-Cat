@@ -28,7 +28,7 @@ public class World {
 		rampen.setPosY(worldDimension.getHeight());
 		
 		poolen = new Pool("pool.png");
-		poolen.moveTo(500,500);
+		poolen.moveTo(worldDimension.getWidth()-poolen.getSpriteWidth(), worldDimension.getHeight());
 		
 		camera.setTarget(poolen);
 		camera.animateTo(katten, 300);
@@ -37,8 +37,6 @@ public class World {
 		graphicsobjects.add(rampen);
 		graphicsobjects.add(katten);
 		graphicsobjects.add(poolen);
-		
-		System.out.println(graphicsobjects);
 	}
 	
 	public void render(Graphics2D g) {
