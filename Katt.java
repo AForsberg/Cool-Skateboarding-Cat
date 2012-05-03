@@ -40,25 +40,7 @@ public class Katt extends GraphicsObject {
 	@Override
 	public void update(Controller controller) {		
 		if(isControllable) {
-			if(controller.keys[KeyEvent.VK_LEFT]) {
-				posX -= velocX;
-				directionX = -1;
-			} else if(controller.keys[KeyEvent.VK_RIGHT]) {
-				posX += velocX;			
-				directionX = 1;
-			}
-			
-			if(controller.keys[KeyEvent.VK_UP]) {
-				posY -= velocY;
-				posY = (posY < minY) ? minY : posY;
-				
-				directionY = -1;
-			} else if(controller.keys[KeyEvent.VK_DOWN]) {
-				posY += velocY;
-				posY = (posY > maxY) ? maxY : posY;
-				
-				directionY = 1;
-			}
+			this.posX += 5;
 		}
 		
 		// Keep this in world if it isn't controllable
