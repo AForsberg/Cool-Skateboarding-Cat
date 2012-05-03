@@ -21,4 +21,13 @@ public class Pool extends GraphicsObject {
 	public void render(Graphics2D g) {
 		g.drawImage(sprite, 0, -sprite.getHeight(null), null);
 	}
+	
+	@Override
+	public double[] getReferencePoint() {
+		double[] points = new double[2];
+		points[0] = this.getPosX();
+		points[1] = this.getPosY() - this.getSpriteHeight();
+		
+		return points;
+	}
 }

@@ -71,4 +71,13 @@ public class Katt extends GraphicsObject {
 	public void setAngle(double angle) {
 		this.angle = angle;
 	}
+
+	@Override
+	public double[] getReferencePoint() {
+		double[] points = new double[2];
+		points[0] = this.getPosX() - this.getSpriteWidth()/2;
+		points[1] = this.getPosY() - this.getSpriteHeight()/2;
+		
+		return points;
+	}
 }
