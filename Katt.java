@@ -6,13 +6,13 @@ import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
 	
-	private double velocMaxX = 10;
+	private double velocMaxX = 8;
 	private double angle;
 	private boolean isJumping = false;
 	
 	public Katt(String spritePath) {
 		
-		accelX = 0.4;
+		accelX = 0.2;
 		accelY = 0;
 		
 		try {
@@ -68,13 +68,18 @@ public class Katt extends GraphicsObject {
 			if(!isJumping  && controller.keys[KeyEvent.VK_SPACE]) {
 				this.jump();
 			}
+			
+			// This prevents multi-jumping. I think.
 			isJumping = controller.keys[KeyEvent.VK_SPACE];
+			
+			// isJumping is TRUE if in air, else FALSE
 			isJumping = (this.posY < this.maxY) ? true : false;
 			
 			// Movement y-wise
 			this.velocY += this.accelY;
-			this.posY += this.velocY;
-			this.velocY = this.accelY = 0;
+			System.out.println(this.velocY);
+			this.posY += velocY;
+			this.accelY = 0;
 		}
 		
 		// Keep This within limits
@@ -85,10 +90,14 @@ public class Katt extends GraphicsObject {
 	}
 	
 	private void jump() {
-		this.accelY -= 100;
+		this.accelY -= 20;
 	}
 
 	public void setAngle(double angle) {
 		this.angle = angle;
+	}
+	
+	public boolean isJumping() {
+		return isJumping;
 	}
 }

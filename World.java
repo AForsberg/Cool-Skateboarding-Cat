@@ -58,7 +58,7 @@ public class World {
 			go.update(controller);
 		}
 		
-		katten.accelY += gravity;
+		if(katten.isJumping()) katten.accelY += gravity;
 	}
 	
 	public Dimension getCameraDimension() {
