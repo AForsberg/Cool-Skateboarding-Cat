@@ -12,9 +12,8 @@ public class World {
 	private Ramp rampen;
 	private Pool poolen;
 	
-	private double gravity = 10;
+	private double gravity = 5;
 
-	
 	public World(String bgPath) {
 		background = new Background(bgPath);
 		worldDimension = new Dimension((int)background.getSpriteWidth(), (int)background.getSpriteHeight());
@@ -59,6 +58,8 @@ public class World {
 		}
 		
 		if(katten.isJumping()) katten.accelY += gravity;
+		
+		System.out.println(PhysicsEngine.isColliding(katten, rampen));
 	}
 	
 	public Dimension getCameraDimension() {

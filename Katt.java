@@ -76,7 +76,6 @@ public class Katt extends GraphicsObject {
 			
 			// Movement y-wise
 			this.velocY += this.accelY;
-			System.out.println(this.velocY);
 			this.posY += velocY;
 			this.accelY = 0;
 		}
