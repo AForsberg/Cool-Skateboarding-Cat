@@ -35,6 +35,15 @@ public class Ramp extends GraphicsObject {
 		g.setColor(new Color(83, 56, 00));
 		g.fillPolygon(xpoints, ypoints, 4);
 	}
+	
+	@Override
+	public double[] getReferencePoint() {
+		double[] points = new double[2];
+		points[0] = this.getPosX();
+		points[1] = this.getPosY() - this.height;
+		
+		return points;
+	}
 
 	public void setAngle(double angle) {
 		
@@ -42,5 +51,15 @@ public class Ramp extends GraphicsObject {
 	
 	public double getAngle() {
 		return Math.atan2(height, width);
+	}
+	
+	@Override
+	public double getWidth() {
+		return width;
+	}
+	
+	@Override
+	public double getHeight() {
+		return height;
 	}
 }

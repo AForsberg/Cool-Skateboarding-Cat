@@ -11,7 +11,6 @@ public class Katt extends GraphicsObject {
 	private boolean isJumping = false;
 	
 	public Katt(String spritePath) {
-		
 		accelX = 0.2;
 		accelY = 0;
 		
@@ -96,8 +95,17 @@ public class Katt extends GraphicsObject {
 	public void setAngle(double angle) {
 		this.angle = angle;
 	}
-	
+
 	public boolean isJumping() {
 		return isJumping;
+	}
+
+	@Override
+	public double[] getReferencePoint() {
+		double[] points = new double[2];
+		points[0] = this.getPosX() - this.getSpriteWidth()/2;
+		points[1] = this.getPosY() - this.getSpriteHeight()/2;
+		
+		return points;
 	}
 }
