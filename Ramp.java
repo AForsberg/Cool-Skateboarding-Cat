@@ -52,4 +52,14 @@ public class Ramp extends GraphicsObject {
 	public double getAngle() {
 		return Math.atan2(height, width);
 	}
+	
+	@Override
+	public double getWidth() {
+		return width;
+	}
+	
+	@Override
+	public double getHeight() {
+		return height;
+	}
 }

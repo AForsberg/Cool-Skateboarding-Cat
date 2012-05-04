@@ -48,6 +48,14 @@ public class GraphicsObject {
 		this.posY = posY;
 	}
 	
+	public double getWidth() {
+		return getSpriteWidth();
+	}
+	
+	public double getHeight() {
+		return getSpriteHeight();
+	}
+	
 	public double getSpriteWidth() {
 		return sprite.getWidth(null);
 	}

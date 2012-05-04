@@ -58,6 +58,8 @@ public class World {
 		}
 		
 		katten.setAccelY(katten.getAccelY()-gravity);
+		
+		System.out.println(PhysicsEngine.isColliding(katten, rampen));
 	}
 	
 	public Dimension getCameraDimension() {
