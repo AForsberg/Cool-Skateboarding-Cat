@@ -12,7 +12,7 @@ public class World {
 	private Ramp rampen;
 	private Pool poolen;
 	
-	private double gravity = 9.82;
+	private double gravity = 10;
 
 	
 	public World(String bgPath) {
@@ -32,8 +32,9 @@ public class World {
 		poolen = new Pool("pool.png");
 		poolen.moveTo(worldDimension.getWidth()-poolen.getSpriteWidth(), worldDimension.getHeight());
 		
-		camera.setTarget(poolen);
-		camera.animateTo(katten, 300);
+		//camera.setTarget(poolen);
+		//camera.animateTo(katten, 300);
+		camera.setTarget(katten);
 		
 		graphicsobjects.add(background);
 		graphicsobjects.add(rampen);
@@ -56,6 +57,8 @@ public class World {
 		for(GraphicsObject go : graphicsobjects) {
 			go.update(controller);
 		}
+		
+		if(katten.isJumping()) katten.accelY += gravity;
 	}
 	
 	public Dimension getCameraDimension() {

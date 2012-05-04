@@ -48,6 +48,14 @@ public class GraphicsObject {
 		this.posY = posY;
 	}
 	
+	public double getWidth() {
+		return getSpriteWidth();
+	}
+	
+	public double getHeight() {
+		return getSpriteHeight();
+	}
+	
 	public double getSpriteWidth() {
 		return sprite.getWidth(null);
 	}
@@ -78,6 +86,19 @@ public class GraphicsObject {
 	
 	public boolean isControllable() {
 		return isControllable;
+	}
+	
+	/**
+	 * This method returns to X- and Y-position of the top left corner of the GO instance.
+	 * If render is overridden, getReferencePoint must be aswell.
+	 * @return
+	 */
+	public double[] getReferencePoint() {
+		double[] points = new double[2];
+		points[0] = this.getPosX();
+		points[1] = this.getPosY();
+		
+		return points;
 	}
 
 	public double getAccelX() {
