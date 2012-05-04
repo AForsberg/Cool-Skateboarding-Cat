@@ -6,12 +6,13 @@ import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
 	
-	private double velocMaxX = 8;
+	private double velocMaxX = 10;
 	private double angle;
+	private boolean isJumping = false;
 	
 	public Katt(String spritePath) {
 		
-		accelX = 0.3;
+		accelX = 0.4;
 		accelY = 0;
 		
 		try {
@@ -46,30 +47,33 @@ public class Katt extends GraphicsObject {
 			if(controller.keys[KeyEvent.VK_LEFT]) {
 				this.velocX -= this.accelX;
 				directionX = -1;
-			} else if(controller.keys[KeyEvent.VK_RIGHT]) {
+			}
+			if(controller.keys[KeyEvent.VK_RIGHT]) {
 				this.velocX += this.accelX;			
 				directionX = 1;
-			} else {
-				this.velocX = 0;
 			}
 			
 			if(velocX < 0 && Math.abs(velocX) > velocMaxX) {
 				this.posX += -this.velocMaxX;
+				this.velocX = -this.velocMaxX;
 			} else if(velocX > velocMaxX) {
 				this.posX += velocMaxX;
+				this.velocX = this.velocMaxX;
 			} else {
 				this.posX += this.velocX;
 			}
 			
 			
+			// Jump when Space pressed
+			if(!isJumping  && controller.keys[KeyEvent.VK_SPACE]) {
+				this.jump();
+			}
+			isJumping = controller.keys[KeyEvent.VK_SPACE];
+			
 			// Movement y-wise
 			this.velocY += this.accelY;
 			this.posY += this.velocY;
-			
-			// Jump when Space pressed
-			if(controller.keys[KeyEvent.VK_SPACE]) {
-				this.jump();
-			}
+			this.velocY = this.accelY = 0;
 		}
 		
 		// Keep This within limits
@@ -80,7 +84,7 @@ public class Katt extends GraphicsObject {
 	}
 	
 	private void jump() {
-		this.accelY -= 20;
+		this.accelY -= 100;
 	}
 
 	public void setAngle(double angle) {
