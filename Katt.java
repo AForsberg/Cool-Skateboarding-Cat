@@ -69,6 +69,7 @@ public class Katt extends GraphicsObject {
 				this.jump();
 			}
 			isJumping = controller.keys[KeyEvent.VK_SPACE];
+			isJumping = (this.posY < this.maxY) ? true : false;
 			
 			// Movement y-wise
 			this.velocY += this.accelY;
