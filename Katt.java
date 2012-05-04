@@ -6,11 +6,13 @@ import javax.imageio.ImageIO;
 
 public class Katt extends GraphicsObject {
 	
+	private double velocMaxX = 8;
 	private double angle;
 	
 	public Katt(String spritePath) {
 		
-		velocX = velocY = 10;
+		accelX = 0.3;
+		accelY = 0;
 		
 		try {
 			sprite = ImageIO.read(getClass().getResource(spritePath));
@@ -40,34 +42,47 @@ public class Katt extends GraphicsObject {
 	@Override
 	public void update(Controller controller) {		
 		if(isControllable) {
+			// Movement x-wise
 			if(controller.keys[KeyEvent.VK_LEFT]) {
-				posX -= velocX;
+				this.velocX -= this.accelX;
 				directionX = -1;
 			} else if(controller.keys[KeyEvent.VK_RIGHT]) {
-				posX += velocX;			
+				this.velocX += this.accelX;			
 				directionX = 1;
+			} else {
+				this.velocX = 0;
 			}
 			
-			if(controller.keys[KeyEvent.VK_UP]) {
-				posY -= velocY;
-				posY = (posY < minY) ? minY : posY;
-				
-				directionY = -1;
-			} else if(controller.keys[KeyEvent.VK_DOWN]) {
-				posY += velocY;
-				posY = (posY > maxY) ? maxY : posY;
-				
-				directionY = 1;
+			if(velocX < 0 && Math.abs(velocX) > velocMaxX) {
+				this.posX += -this.velocMaxX;
+			} else if(velocX > velocMaxX) {
+				this.posX += velocMaxX;
+			} else {
+				this.posX += this.velocX;
+			}
+			
+			
+			// Movement y-wise
+			this.velocY += this.accelY;
+			this.posY += this.velocY;
+			
+			// Jump when Space pressed
+			if(controller.keys[KeyEvent.VK_SPACE]) {
+				this.jump();
 			}
 		}
 		
-		// Keep this in world if it isn't controllable
+		// Keep This within limits
 		if(posX < minX) posX = minX;
 		else if(posX > maxX) posX = maxX;
 		if(posY < minY) posY = minY;
 		else if(posY > maxY) posY = maxY;
 	}
 	
+	private void jump() {
+		this.accelY -= 20;
+	}
+
 	public void setAngle(double angle) {
 		this.angle = angle;
 	}
