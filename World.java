@@ -59,7 +59,7 @@ public class World {
 		
 		if(katten.isJumping()) katten.accelY += gravity;
 		
-		System.out.println(PhysicsEngine.isColliding(katten, rampen));
+		System.out.println(PhysicsEngine.isColliding(rampen, katten));
 	}
 	
 	public Dimension getCameraDimension() {
